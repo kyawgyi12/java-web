@@ -1,0 +1,33 @@
+.my-thumbnail {
+    position:relative;
+    overflow:hidden;
+}
+ 
+.caption {
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(66, 139, 202, 0.75);
+    width:100%;
+    height:100%;
+    padding:2%;
+    display: none;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
+}
+
+#about {
+    position:relative;
+    padding-top: 100px;    
+}
+
+.left-padd-1 {
+    padding-left: 30px;
+}
+
+.my-grid {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
