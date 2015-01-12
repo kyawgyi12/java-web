@@ -3,40 +3,87 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>New Student</title>
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<form action="/web-ch1/student-add" method="post">
-<table>
-	<tr>
-		<td>Name</td>
-		<td><input type="text" name="name" /></td>
-	</tr>
-	<tr>
-		<td>Gender</td>
-		<td><input type="text" name="gender" /></td>
-	</tr>
-	<tr>
-		<td>Address</td>
-		<td><input type="text" name="address" /></td>
-	</tr>
-	<tr>
-		<td>Township</td>
-		<td><input type="text" name="township" /></td>
-	</tr>
-	<tr>
-		<td>Mail</td>
-		<td><input type="text" name="mail" /></td>
-	</tr>
-	<tr>
-		<td>Phone</td>
-		<td><input type="text" name="phone" /></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td><input type="submit" value="Send" /></td>
-	</tr>
-</table>
-</form>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Student Registration Form</h1>
+		</div>
+	</div>
+</div>
+<br/>
+<br/>	
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+		<form action="/web-ch1/student-add" method="post" class="form-horizontal">
+			<div class="form-group">
+				<label class="col-xs-2 control-label">Name</label>
+				<div class="col-xs-3">
+					<input class="form-control" type="text" name="name" required="required" placeholder="Enter Your Name"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-xs-2 control-label">Gender</label>
+				<div class="col-xs-3">
+					<div class="radio-inline">
+						<label><input type="radio" name="gender" value="true"/> Male</label>
+					</div>
+					<div class="radio-inline">
+						<label><input type="radio" name="gender" value="false" /> Female</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-xs-2 control-label">Email</label>
+				<div class="col-xs-3">
+					<input class="form-control" type="text" name="mail" placeholder="Enter Mail Address"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-xs-2 control-label">Phone</label>
+				<div class="col-xs-3">
+					<input class="form-control" type="text" name="phone" required="required" placeholder="Enter Phone Number"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-xs-2 control-label">Township</label>
+				<div class="col-xs-3">
+					<select class="form-control" name="township">
+						<option>Bahan</option>
+						<option>Yankin</option>
+						<option>South Okkalarpa</option>
+						<option>North Okkalarpa</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-xs-2 control-label">Address</label>
+				<div class="col-xs-3">
+					<textarea rows="4" cols="20" class="form-control"></textarea>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-xs-3 col-xs-offset-2">
+					<button class="btn btn-default">Send</button>
+				</div>
+			</div>
+		</form>
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.easing.min.js"></script>
 
 </body>
 </html>
