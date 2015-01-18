@@ -22,9 +22,6 @@ public class ForwardTo extends HttpServlet {
 		pw.write("<h1>This is Message From Forward To Servlet</h1>");
 		pw.write("<br />");
 		pw.write("<br />");
-		pw.write("<a href='javascript:history.back();'>Back</a>");
-		pw.write("<br />");
-		pw.write("<br />");
 		
 		getServletContext().getRequestDispatcher("/footer").include(request, response);
 	}

@@ -8,11 +8,11 @@ public class Counter implements Serializable {
 	
 	private int count;
 	
-	public void countUp() {
+	public synchronized void countUp() {
 		count ++;
 	}
 	
-	public int getCount() {
+	public  synchronized int getCount() {
 		return count;
 	}
 

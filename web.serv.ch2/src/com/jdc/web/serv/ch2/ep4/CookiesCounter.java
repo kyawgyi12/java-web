@@ -39,9 +39,6 @@ public class CookiesCounter extends HttpServlet {
 		pw.write(String.format("<h1>Cookie Access Count : %d</h1>", count));
 		pw.write("<br />");
 		pw.write("<br />");
-		pw.write("<a href='javascript:history.back();'>Back</a>");
-		pw.write("<br />");
-		pw.write("<br />");
 		
 		getServletContext().getRequestDispatcher("/footer").include(request, response);
 		

@@ -14,8 +14,6 @@ public class RediretServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		request.setAttribute("title", "Redirect Servlet");
-		
 		response.sendRedirect("redirect-to");
 	}
 

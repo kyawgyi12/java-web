@@ -1,7 +1,6 @@
 package com.jdc.web.serv.ch2.ep1;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,10 +18,7 @@ public class IncludeServlet extends HttpServlet {
 
 		request.getRequestDispatcher("header").include(request, response);
 
-		PrintWriter pw = response.getWriter();
-		pw.write("<h1>Message From Include Servlet</h1><br/><br/>");
-		pw.write("<a href='javascript:history.back();'>Back</a>");
-		pw.write("<br/><br/>");
+		response.getWriter().write("<h1>Message From Include Servlet</h1><br/><br/>");
 
 		getServletContext().getNamedDispatcher("FooterServlet").include(
 				request, response);

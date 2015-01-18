@@ -16,6 +16,10 @@ public class FooterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter pw = response.getWriter();
+
+		pw.write("<a href='javascript:history.back();'>Back</a>");
+		pw.write("<br/><br/>");
+
 		pw.write("&copy;2014 Java Developer Class");
 		pw.write("</body>");
 		

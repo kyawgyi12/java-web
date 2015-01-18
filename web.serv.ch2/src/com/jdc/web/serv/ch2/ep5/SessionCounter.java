@@ -37,10 +37,7 @@ public class SessionCounter extends HttpServlet {
 		request.getRequestDispatcher("header").include(request, response);
 
 		PrintWriter pw = response.getWriter();
-		pw.write(String.format("<h1>Cookie Access Count : %d</h1>", counter.getCount()));
-		pw.write("<br />");
-		pw.write("<br />");
-		pw.write("<a href='javascript:history.back();'>Back</a>");
+		pw.write(String.format("<h1>Session Access Count : %d</h1>", counter.getCount()));
 		pw.write("<br />");
 		pw.write("<br />");
 		
