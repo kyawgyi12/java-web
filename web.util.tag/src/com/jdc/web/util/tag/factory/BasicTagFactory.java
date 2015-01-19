@@ -20,4 +20,10 @@ public class BasicTagFactory implements AbstractTagFactory {
 		basicTag = new BasicTag(name);
 	}
 
+	@Override
+	public BasicTagFactory styleClass(String styleClass) {
+		basicTag.addAttribute("class", styleClass);
+		return this;
+	}
+
 }

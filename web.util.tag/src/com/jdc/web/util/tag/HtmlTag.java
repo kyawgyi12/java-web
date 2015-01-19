@@ -23,12 +23,14 @@ public class HtmlTag extends BasicTag {
 	}
 
 	@Override
-	public void addChilds(Tag... tags) {
+	public Tag addChilds(Tag... tags) {
 		body.addChilds(tags);
+		return this;
 	}
 	
-	public void addToHead(Tag ...tags) {
+	public Tag addToHead(Tag ...tags) {
 		head.addChilds(tags);
+		return this;
 	}
 
 }

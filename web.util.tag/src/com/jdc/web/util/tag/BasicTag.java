@@ -63,16 +63,22 @@ public class BasicTag implements Tag{
 		return sb.toString();
 	}
 	
-	public void addAttributes(Map<String, String> data) {
+	public Tag addAttributes(Map<String, String> data) {
 		attributes.putAll(data);
+		return this;
 	}
 	
-	public void addAttribute(String key, String value) {
-		attributes.put(key, value);
+	public Tag addAttribute(String key, String value) {
+		if(null != value) {
+			attributes.put(key, value);
+		}
+		return this;
 	}
 
 	@Override
-	public void addChilds(Tag... tags) {
+	public Tag addChilds(Tag... tags) {
 		childs.addAll(Arrays.asList(tags));
+		return this;
 	}
+
 }

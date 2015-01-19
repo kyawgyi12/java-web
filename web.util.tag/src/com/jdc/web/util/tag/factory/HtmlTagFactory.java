@@ -16,4 +16,10 @@ public class HtmlTagFactory implements AbstractTagFactory {
 		tag = new HtmlTag(title);
 	}
 
+	@Override
+	public HtmlTagFactory styleClass(String styleClass) {
+		tag.addAttribute("class", styleClass);
+		return this;
+	}
+
 }

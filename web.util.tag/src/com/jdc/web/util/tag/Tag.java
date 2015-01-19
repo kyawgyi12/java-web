@@ -4,8 +4,8 @@ import java.util.Map;
 
 public interface Tag {
 
-	public void addChilds(Tag ... tags);
-	public void addAttributes(Map<String, String> data);
-	public void addAttribute(String key, String value);
+	public Tag addChilds(Tag ... tags);
+	public Tag addAttributes(Map<String, String> data);
+	public Tag addAttribute(String key, String value);
 	public String getHtml();
 }

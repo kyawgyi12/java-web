@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jdc.web.util.tag.Tag;
+import com.jdc.web.util.tag.factory.AnchorTagFactory;
 import com.jdc.web.util.tag.factory.BasicTagFactory;
 import com.jdc.web.util.tag.factory.TagFactory;
 
@@ -126,13 +127,11 @@ public abstract class AbstractView extends HttpServlet {
 
 	private Tag getMenuItemTag(String name, String href, String icon) {
 		Tag li = TagFactory.create(new BasicTagFactory("li"));
-		Tag a = TagFactory.create(new BasicTagFactory("a", name));
+		Tag a = TagFactory.create(new AnchorTagFactory(name, href));
+		
 		if (null != icon) {
-			Tag ic = TagFactory.create(new BasicTagFactory("span"));
-			ic.addAttribute("class", "glyphicon " + icon);
-			a.addChilds(ic);
-		}
-		a.addAttribute("href", href);
+			a = TagFactory.create(new AnchorTagFactory("Logout", "logout").addIcon("glyphicon-log-out"));
+		} 
 		li.addChilds(a);
 		return li;
 	}
