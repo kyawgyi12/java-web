@@ -1,0 +1,4 @@
+iPhone 4,300000
+iPhone 4S,400000
+iPhone 5,500000
+iPhone 5S,550000
