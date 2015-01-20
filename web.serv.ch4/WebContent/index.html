@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	
+	<title>Servlet Day 4</title>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h1>JDC Servlet Day 4</h1>
+			<p>In this tutorial we will learn about Database connectivity by JDBC.
+			And then we will learn how to upload a file by servlet. Finally we will learn
+			Asynchronous Support by servlet.</p>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-4">
+				<h3>Student Registration</h3>	
+				<p>In this sample, we use a form page for student input,
+				a servlet that get user inputs and add a row to table.
+				After that the servlet redirect to another servlet that show students from database.</p>
+				<p><a href="add-new.html" class="btn btn-default">Create New Student</a></p>		
+			</div>
+			<div class="col-xs-4">
+				<h3>Student File Upload</h3>	
+				<p>In this sample, a csv file is uploaded from html form.
+				After uploading this file, csv is parsing into java object and data will be 
+				insert into database. 
+				After inserting data, forward to the list page.</p>
+				<p><a href="upload.html" class="btn btn-default">CSV File Upload</a></p>		
+			</div>
+			<div class="col-xs-4">
+				<h3>Asynchronous Update</h3>	
+				<p>In this sample, we are using asynchronous request function of servlet.
+				It start from the list page and if you click edit button, the update form will be open by asynchronous 
+				process. After that if you edit and press save button. The form will be submit to servlet and 
+				update the database. </p>
+				<p><a href="student-update" class="btn btn-default">Asynchronous update</a></p>		
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

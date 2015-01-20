@@ -47,7 +47,7 @@ public class CartView extends AbstractView {
 			panel.addChilds(panelHead, panelBody);
 
 			Tag colDiv = TagFactory.create(new BasicTagFactory("div")
-					.styleClass("col-xs-9"));
+					.styleClass("col-xs-12"));
 			panelBody.addChilds(colDiv);
 
 			// form
