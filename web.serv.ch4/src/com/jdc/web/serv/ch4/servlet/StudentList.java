@@ -75,7 +75,7 @@ public class StudentList extends HttpServlet {
 								// panel-heading
 										TagFactory.create(new BasicTagFactory(
 												"div")
-												.styleClass("panel-heading")),
+												.styleClass("panel-heading")).addChilds(TagFactory.create(new BasicTagFactory("h4", "Student Table"))),
 										// panel-body
 										TagFactory
 												.create(new BasicTagFactory(

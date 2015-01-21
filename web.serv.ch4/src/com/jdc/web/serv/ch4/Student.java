@@ -9,11 +9,19 @@ public class Student implements Serializable{
 
 	private int id;
 	private String name;
-	private Date date;
+	private Date dob;
 	private String phone;
 	private String mail;
 	private Gender gender;
+	private String address;
 	
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public int getId() {
 		return id;
 	}
@@ -26,11 +34,12 @@ public class Student implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getDate() {
-		return date;
+
+	public Date getDob() {
+		return dob;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 	public String getPhone() {
 		return phone;

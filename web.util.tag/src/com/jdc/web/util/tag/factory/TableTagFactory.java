@@ -41,17 +41,22 @@ public class TableTagFactory implements AbstractTagFactory {
 								"td", f.getName().toUpperCase())));
 					}
 				}
+				
+				tag.addChilds(hTr);
 
 				// body rows
 				for (T t : list) {
+					Tag tr = TagFactory.create(new BasicTagFactory("tr"));
 					for (Field f : fs) {
 						f.setAccessible(true);
 						if (!"serialVersionUID".equals(f.getName())) {
 							Object value = f.get(t);
-							hTr.addChilds(TagFactory
+							tr.addChilds(TagFactory
 									.create(new BasicTagFactory("td", value.toString())));
 						}
 					}
+					
+					tag.addChilds(tr);
 				}
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {

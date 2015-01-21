@@ -1,6 +1,7 @@
 package com.jdc.web.serv.ch4.util;
 
 import java.lang.reflect.Field;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -55,7 +56,12 @@ public class SqlHelper<T> {
 				
 				if (f.getName().equals("gender")) {
 					fieldObj = ((Gender)fieldObj).ordinal();
-				} 
+				}
+				
+				// util.Date to sql.Date
+				if (f.getName().equals("dob")) {
+					fieldObj = new Date(((java.util.Date)fieldObj).getTime());
+				}
 				
 				map.put(f.getName(), fieldObj);
 			}
