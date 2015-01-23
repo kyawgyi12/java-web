@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+<link href="resources/css/fileinput.min.css" rel="stylesheet" />
+
+<title>File Upload</title>
+</head>
+<body>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h2>JDC Servlet Day 4 Tutorial</h2>
+			<p>Asynchronous File Upload</p>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Select Upload File</h4>
+			</div>
+			<div class="panel-body">
+				<form action="async-upload" method="post" class="form-horizontal"
+					role="form" enctype="multipart/form-data">
+					<div class="col-xs-8">
+						<input type="file" class="file" name="load-file" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="resources/js/fileinput.min.js"></script>
+
+</body>
+
+</html>
