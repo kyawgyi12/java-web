@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.annotation.Resource;
@@ -37,7 +39,8 @@ public class AsynchronousUpload extends HttpServlet {
 		// asynchronous processing
 		ac.start(() -> {
 			// insert sql
-			String sql = "insert into student (name, dob, gender, mail, phone, address) values (?, ?, ?, ?, ?, ?)";
+			String sql = "insert into student " 
+					+ "(name, dob, gender, mail, phone, address) values (?, ?, ?, ?, ?, ?)";
 
 			try (Connection conn = ds.getConnection();
 					PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -45,35 +48,8 @@ public class AsynchronousUpload extends HttpServlet {
 				// get part from requested form
 				Part part = ((HttpServletRequest) ac.getRequest())
 						.getPart("load-file");
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(part.getInputStream()));
-
-				String line = null;
-
-				// read objects from uploaded file
-				while ((line = reader.readLine()) != null) {
-					String[] strs = line.split("\t");
-
-					// name
-					stmt.setObject(1, strs[0]);
-					// dob
-					stmt.setObject(2, new Date(new SimpleDateFormat(
-							"yyyy-MM-dd").parse(strs[1]).getTime()));
-					// gender
-					stmt.setObject(3, Gender.valueOf(strs[2]).ordinal());
-					// mail
-					stmt.setObject(4, strs[3]);
-					// phone
-					stmt.setObject(5, strs[4]);
-					// address
-					stmt.setObject(6, strs[5]);
-
-					// adding to batch
-					stmt.addBatch();
-				}
-
-				// batch update
-				stmt.executeBatch();
+				
+				this.update(part, stmt);
 
 				ac.getRequest().getRequestDispatcher("student-list")
 						.forward(ac.getRequest(), ac.getResponse());
@@ -85,5 +61,36 @@ public class AsynchronousUpload extends HttpServlet {
 
 		});
 	}
+	
+	private void update(Part part, PreparedStatement stmt) throws IOException, SQLException, ParseException {
+		BufferedReader reader = new BufferedReader(
+				new InputStreamReader(part.getInputStream()));
+
+		String line = null;
+
+		// read objects from uploaded file
+		while ((line = reader.readLine()) != null) {
+			String[] strs = line.split("\t");
+
+			// name
+			stmt.setObject(1, strs[0]);
+			// dob
+			stmt.setObject(2, new Date(new SimpleDateFormat(
+					"yyyy-MM-dd").parse(strs[1]).getTime()));
+			// gender
+			stmt.setObject(3, Gender.valueOf(strs[2]).ordinal());
+			// mail
+			stmt.setObject(4, strs[3]);
+			// phone
+			stmt.setObject(5, strs[4]);
+			// address
+			stmt.setObject(6, strs[5]);
+
+			// adding to batch
+			stmt.addBatch();
+		}
+
+		// batch update
+		stmt.executeBatch();	}
 
 }
