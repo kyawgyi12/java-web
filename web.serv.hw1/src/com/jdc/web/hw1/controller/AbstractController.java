@@ -38,6 +38,12 @@ public abstract class AbstractController extends HttpServlet {
 		disp.forward(req, resp);
 	}
 	
+	protected void showLoginView(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		RequestDispatcher disp = req.getRequestDispatcher("index.html");
+		disp.forward(req, resp);
+	}
+	
 	
 	@SuppressWarnings("unchecked")
 	protected <T> Model<T> getModel(Class<T> entity) {

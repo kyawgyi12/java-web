@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import com.jdc.web.hw1.model.SellItemModel;
 import com.jdc.web.hw1.model.entity.SellItem;
 import com.jdc.web.hw1.model.entity.User;
-import com.jdc.web.hw1.view.ErrorView;
 import com.jdc.web.hw1.view.HomeView;
 
 @WebServlet("/home")
@@ -25,9 +24,7 @@ public class HomeController extends AbstractController{
 		HttpSession session = req.getSession(true);
 		
 		if(session.isNew() || session.getAttribute("login") == null) {
-			req.setAttribute("type", "login-error");
-			req.setAttribute("message", "You need to login to do this operation.");
-			loadView(ErrorView.class, req, resp);
+			showLoginView(req, resp);
 		} else {
 			// get user purchase list
 			HttpSession sess = req.getSession();

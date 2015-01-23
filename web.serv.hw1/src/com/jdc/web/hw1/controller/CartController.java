@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.jdc.web.hw1.view.ErrorView;
-
 @WebServlet({"/addToCart", "/checkOut", "/myCart"})
 public class CartController extends AbstractController{
 
@@ -21,9 +19,7 @@ public class CartController extends AbstractController{
 		HttpSession session = req.getSession(true);
 		
 		if(session.isNew() || session.getAttribute("login") == null) {
-			req.setAttribute("type", "login-error");
-			req.setAttribute("message", "You need to login to do this operation.");
-			loadView(ErrorView.class, req, resp);
+			showLoginView(req, resp);
 		} else {
 			
 			if("/checkOut".equals(req.getServletPath())) {

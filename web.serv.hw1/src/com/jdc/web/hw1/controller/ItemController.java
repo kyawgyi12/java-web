@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import com.jdc.web.hw1.model.ItemModel;
 import com.jdc.web.hw1.model.entity.Item;
 import com.jdc.web.hw1.view.CartView;
-import com.jdc.web.hw1.view.ErrorView;
 import com.jdc.web.hw1.view.ItemListView;
 
 @WebServlet({"/itemList", "/item"})
@@ -27,10 +26,7 @@ public class ItemController extends AbstractController {
 		HttpSession session = req.getSession(true);
 		
 		if(session.isNew() || session.getAttribute("login") == null) {
-			req.setAttribute("title", "Login Error");
-			req.setAttribute("type", "login-error");
-			req.setAttribute("message", "You need to login to do this operation.");
-			loadView(ErrorView.class, req, resp);
+			showLoginView(req, resp);
 		} else {
 			
 			if("/itemList".equals(req.getServletPath())) {
