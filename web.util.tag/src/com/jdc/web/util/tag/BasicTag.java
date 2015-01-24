@@ -2,6 +2,7 @@ package com.jdc.web.util.tag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +20,8 @@ public class BasicTag implements Tag{
 	
 	public BasicTag(String name) {
 		this.name = name;
-		this.childs = new ArrayList<>();
-		this.attributes = new HashMap<>();
+		this.childs = Collections.synchronizedList(new ArrayList<>());
+		this.attributes = Collections.synchronizedMap(new HashMap<>());
 	}
 	
 	public BasicTag(String name, String value) {
@@ -31,7 +32,7 @@ public class BasicTag implements Tag{
 		this.attributes = new HashMap<>();
 	}
 
-	public String getHtml() {
+	public synchronized String getHtml() {
 		StringBuffer sb = new StringBuffer();
 		// open tag
 		sb.append(String.format("<%s ", name));
@@ -63,12 +64,12 @@ public class BasicTag implements Tag{
 		return sb.toString();
 	}
 	
-	public Tag addAttributes(Map<String, String> data) {
+	public synchronized Tag addAttributes(Map<String, String> data) {
 		attributes.putAll(data);
 		return this;
 	}
 	
-	public Tag addAttribute(String key, String value) {
+	public synchronized Tag addAttribute(String key, String value) {
 		if(null != value) {
 			attributes.put(key, value);
 		}
@@ -76,7 +77,7 @@ public class BasicTag implements Tag{
 	}
 
 	@Override
-	public Tag addChilds(Tag... tags) {
+	public synchronized Tag addChilds(Tag... tags) {
 		childs.addAll(Arrays.asList(tags));
 		return this;
 	}

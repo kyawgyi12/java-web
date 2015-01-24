@@ -8,7 +8,7 @@ public class SellItem extends Entity {
 	
 	@Override
 	protected void setId() {
-		id = GENERATE_ID++;
+		id = ++GENERATE_ID;
 	}
 	
 	private User user;
