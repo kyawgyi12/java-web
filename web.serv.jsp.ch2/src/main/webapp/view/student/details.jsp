@@ -1,8 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <form class="form form-horizontal"
-	action="/web.serv.jsp.ch2/edit?id=${item.id}">
-
+	action="/web.serv.jsp.ch2/students/edit">
+	<input type="hidden" name="id" value="${item.id}"/>
 	<div class="form-group">
 		<label class="control-label col-xs-3">Student ID</label>
 		<div class="col-xs-6">
@@ -43,8 +43,10 @@
 		</div>
 	</div>
 
-	<div class="col-xs-offset-3">
+	<div class="form-group">
+	<div class="col-xs-offset-3 col-xs-9">
 		<a href="javascript:history.back();" class="btn btn-default">BACK</a>
 		<input type="submit" value="Edit" class="btn btn-default" />
+	</div>
 	</div>
 </form>

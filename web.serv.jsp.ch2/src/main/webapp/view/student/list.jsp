@@ -17,8 +17,8 @@
 			<td><span>${item.phone}</span></td>
 			<td><span>${item.mail}</span></td>
 			<td><span>${item.address}</span></td>
-			<td><a href="/web.serv.jsp.ch2/students/edit?id=${item.id}" title="Edit"><span class="glyphicon glyphicon-cog"></span></a></td>
-			<td><a href="/web.serv.jsp.ch2/students/delete?id=${item.id}" title="Delete"><span class="glyphicon glyphicon-remove"></span></a></td>
+			<td><a href="/web.serv.jsp.ch2/students/edit?id=${item.id}" data-toggle="tooltip" title="Edit"><span class="glyphicon glyphicon-cog"></span></a></td>
+			<td><a href="/web.serv.jsp.ch2/students/delete?id=${item.id}" data-toggle="tooltip" title="Delete"><span class="glyphicon glyphicon-remove"></span></a></td>
 		</tr>
 	</c:forEach>
 </table>

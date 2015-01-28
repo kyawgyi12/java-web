@@ -42,9 +42,10 @@
 				value="${item.address}" />
 		</div>
 	</div>
-
-	<div class="col-xs-offset-3">
+	<div class="form-group">
+	<div class="col-xs-offset-3 col-xs-9">
 		<a href="javascript:history.back();" class="btn btn-default">BACK</a>
 		<input type="submit" value="SAVE" class="btn btn-default" />
+	</div>
 	</div>
 </form>
