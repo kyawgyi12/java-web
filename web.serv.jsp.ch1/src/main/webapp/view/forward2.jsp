@@ -63,6 +63,40 @@
 		</div>
 	</div>
 </div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4>&lt;jsp:useBean&gt; Action Tags</h4>
+	</div>
+	<div class="panel-body">
+<pre>
+<%= "&lt;jsp:useBean id=\"user\" class=\"com.jdc.web.serv.jsp.ch1.User\" scope=\"request\"&gt;&lt;/jsp:useBean&gt;" %>		
+</pre>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4>&lt;jsp:setProperty&gt; Action Tags</h4>
+	</div>
+	<div class="panel-body">
+<pre>
+<%= "&lt;jsp:setProperty property=\"*\" name=\"user\"/&gt;" %>
+</pre>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4>&lt;jsp:forward&gt; Action Tags</h4>
+	</div>
+	<div class="panel-body">
+<pre>
+<%= "&lt;jsp:forward page=\"forward2.jsp\"&gt;&lt;/jsp:forward&gt;" %>
+</pre>
+	</div>
+</div>
+
 </div>
 </body>
 </html>

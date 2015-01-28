@@ -23,6 +23,20 @@
 	</div>
 	
 	<jsp:include page="include1.jsp"></jsp:include>
+	
+	<div class="panel panel-default">
+
+	<div class="panel-heading">
+		<h4>Include Directive</h4>
+	</div>
+
+	<div class="panel-body">
+<pre>
+	<%= "&lt;jsp:include page=\"include1.jsp\"&gt;&lt;/jsp:include&gt;" %>
+</pre>
+	</div>
+	</div>
+	
 </div>
 </body>
 </html>
