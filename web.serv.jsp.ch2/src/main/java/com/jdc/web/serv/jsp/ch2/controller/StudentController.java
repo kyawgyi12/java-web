@@ -99,13 +99,7 @@ public class StudentController extends Controller {
 			model.update(s);
 		}
 		
-		// title
-		addForView("title", "Student List");
-		// set data for view
-		addForView("list", model.getAll());
-		
-		// load view
-		loadView("student/list");
+		redirect("/students/list");
 	}
 
 }

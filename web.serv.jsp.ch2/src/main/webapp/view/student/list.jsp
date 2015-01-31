@@ -22,6 +22,3 @@
 		</tr>
 	</c:forEach>
 </table>
-
-
-

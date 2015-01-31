@@ -25,9 +25,11 @@ public class Controller extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
 		request = req;
 		response = resp;
 
+		System.out.println(getServletContext().getContextPath());
 		String path = req.getRequestURI();
 		String[] paths = path.split("/");
 
@@ -61,21 +63,30 @@ public class Controller extends HttpServlet {
 		doGet(req, resp);
 	}
 
-	protected void loadView(String view){
+	protected void loadView(String view) {
 
 		try {
-			
+
 			request.setAttribute("page", view);
-			
+
 			getServletContext().getRequestDispatcher(
-					String.format("/view/index.jsp")).forward(request,
-					response);
-			
+					String.format("/view/index.jsp"))
+					.forward(request, response);
+
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
+	protected void redirect(String redirectTo) {
+		try {
+			response.sendRedirect(String.format("%s%s", getServletContext()
+					.getContextPath(), redirectTo));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	protected void addForView(String key, Object value) {
 		request.setAttribute(key, value);
 	}
@@ -83,7 +94,7 @@ public class Controller extends HttpServlet {
 	protected DataSource ds() {
 		return ds;
 	}
-	
+
 	protected String param(String name) {
 		return request.getParameter(name);
 	}
@@ -97,7 +108,7 @@ public class Controller extends HttpServlet {
 			for (Field f : fs) {
 
 				String str = request.getParameter(f.getName());
-				if(null != str) {
+				if (null != str) {
 					f.setAccessible(true);
 					if (f.getType().equals(Integer.class)) {
 						f.set(obj, Integer.valueOf(str));
@@ -107,7 +118,7 @@ public class Controller extends HttpServlet {
 				}
 
 			}
-			
+
 			return obj;
 		} catch (Exception e) {
 			e.printStackTrace();

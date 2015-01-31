@@ -9,4 +9,8 @@
     <param-name>postfix</param-name>
     <param-value>.jsp</param-value>
   </context-param>
+  
+  <welcome-file-list>
+  	<welcome-file>/students/list</welcome-file>
+  </welcome-file-list>
 </web-app>

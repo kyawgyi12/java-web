@@ -39,18 +39,14 @@
 		</div>
 	</div>
 
+<script type="text/javascript" src="/web.serv.jsp.ch2/resources/js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="/web.serv.jsp.ch2/resources/js/bootstrap.min.js"></script>
+
 	<div class="col-xs-12">
 		<jsp:include page="${page}.jsp"></jsp:include>
 	</div>
 </div>
 </div>
 
-
-<script type="text/javascript" src="/web.serv.jsp.ch2/resources/js/jquery-2.1.1.js"></script>
-<script type="text/javascript" src="/web.serv.jsp.ch2/resources/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-$(function () { $("[data-toggle='tooltip']").tooltip(); });
-</script>
 </body>
 </html>
