@@ -57,7 +57,9 @@ public class AddStudent extends HttpServlet {
 		} 
 
 		// forward to list
-		request.getRequestDispatcher("student-list").forward(request, response);
+		// request.getRequestDispatcher("student-list").forward(request, response);
+		
+		response.sendRedirect(String.format("%s/%s", getServletContext().getContextPath(), "student-list"));
 
 	}
 

@@ -74,7 +74,9 @@ public class UploadStudent extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		request.getRequestDispatcher("student-list").forward(request, response);
+		// request.getRequestDispatcher("student-list").forward(request, response);
+		response.sendRedirect(String.format("%s/%s", getServletContext().getContextPath(), "student-list"));
+
 	}
 
 }

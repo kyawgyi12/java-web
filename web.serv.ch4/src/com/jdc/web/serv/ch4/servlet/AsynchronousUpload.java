@@ -51,9 +51,10 @@ public class AsynchronousUpload extends HttpServlet {
 				
 				this.update(part, stmt);
 
-				ac.getRequest().getRequestDispatcher("student-list")
-						.forward(ac.getRequest(), ac.getResponse());
-				
+				// ac.getRequest().getRequestDispatcher("student-list")
+				//		.forward(ac.getRequest(), ac.getResponse());
+				((HttpServletResponse)ac.getResponse()).sendRedirect(String.format("%s/%s", getServletContext().getContextPath(), "student-list"));
+
 				ac.complete();
 			} catch (Exception e) {
 				e.printStackTrace();
