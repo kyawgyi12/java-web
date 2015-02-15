@@ -15,15 +15,15 @@ public class RestaurantController extends AbstractController{
 		
 	}
 	
-	public void add() {
+	public void create() {
 		
 	}
 	
-	public void delete() {
+	public void save() {
 		
 	}
 	
-	public void update() {
+	public void edit() {
 		
 	}
 
