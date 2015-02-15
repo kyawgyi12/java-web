@@ -9,7 +9,7 @@ import com.jdc.ygn.admin.app.model.UserModel;
 import com.jdc.ygn.admin.app.model.entity.User;
 import com.jdc.ygn.mvc.AbstractController;
 
-@WebServlet(urlPatterns="/login")
+@WebServlet(urlPatterns={"/login", "/login/*"})
 public class LoginController extends AbstractController {
 	private static final long serialVersionUID = 1L;
 	
@@ -31,12 +31,14 @@ public class LoginController extends AbstractController {
 	}
 	
 	public void login() {
-		User user = um.getUser(getParam("name"), getParam("pass"));
+		User user = um.getUser(getParam("loginid"), getParam("pass"));
 		if(null == user) {
-			
+			System.out.println("user not found");
+			loadView("login/login");
 		} else {
+			System.out.println("user found");
 			setSessionData("login", user);
-			loadView("login/home");
+			redirect(baseUrl("user"));
 		}
 	}
 	

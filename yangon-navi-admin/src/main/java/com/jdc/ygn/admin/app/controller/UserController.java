@@ -4,19 +4,24 @@ import javax.servlet.annotation.WebServlet;
 
 import com.jdc.ygn.mvc.AbstractController;
 
-@WebServlet("/user")
+@WebServlet(urlPatterns={"/user", "/user/*"})
 public class UserController extends AbstractController {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void index() {
-		// TODO Auto-generated method stub
-
+	public void index() {
+		// load user data
+		
+		loadView("user/home");
 	}
 	
 	public void logout() {
+		// session invalidate
+		session().invalidate();
 		
+		// redirect to login page
+		redirect(baseUrl("login"));
 	}
 
 }

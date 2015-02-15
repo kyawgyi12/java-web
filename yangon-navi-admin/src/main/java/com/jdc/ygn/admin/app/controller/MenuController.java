@@ -10,7 +10,7 @@ public class MenuController extends AbstractController {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void index() {
+	public void index() {
 		// TODO Auto-generated method stub
 
 	}

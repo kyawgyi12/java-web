@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 public abstract class AbstractController extends HttpServlet {
@@ -35,7 +36,7 @@ public abstract class AbstractController extends HttpServlet {
 			List<String> views = new ArrayList<>();
 
 			for (String s : data) {
-				views.add(baseUrl(s));
+				views.add(baseJsp(s));
 			}
 			request.setAttribute("views", views);
 			getServletContext().getRequestDispatcher("/template/index.jsp")
@@ -45,9 +46,14 @@ public abstract class AbstractController extends HttpServlet {
 		}
 	}
 
-	protected String baseUrl(String str) {
+	private String baseJsp(String str) {
 		BaseUrl base = (BaseUrl) getServletContext().getAttribute("baseUrl");
 		return base.jsp(str);
+	}
+	
+	protected String baseUrl(String str) {
+		BaseUrl base = (BaseUrl) getServletContext().getAttribute("baseUrl");
+		return base.url(str);
 	}
 
 	protected void redirect(String path) {
@@ -73,8 +79,12 @@ public abstract class AbstractController extends HttpServlet {
 	protected Connection getConnection() throws SQLException {
 		return ds.getConnection();
 	}
+	
+	protected HttpSession session() {
+		return request.getSession(true);
+	}
 
-	protected abstract void index();
+	public abstract void index();
 
 	@Override
 	protected final void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -89,18 +99,19 @@ public abstract class AbstractController extends HttpServlet {
 			this.request = req;
 			this.response = resp;
 
-			String servletPath = req.getServletPath();
-			String[] paths = servletPath.split("/");
+			String url = req.getRequestURI();
+			String[] paths = url.split("/");
 
 			String method = "index";
-			if (paths.length > 2) {
-				method = paths[2];
+			if (paths.length > 3) {
+				method = paths[3];
 			}
 
 			for (Method m : this.getClass().getMethods()) {
 				m.setAccessible(true);
 				if (m.getName().equals(method)) {
 					m.invoke(this);
+					break;
 				}
 			}
 		} catch (IllegalAccessException | IllegalArgumentException

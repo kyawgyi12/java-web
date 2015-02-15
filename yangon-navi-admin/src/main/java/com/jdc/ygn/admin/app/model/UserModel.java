@@ -15,7 +15,7 @@ public class UserModel extends BaseModel<User> {
 	
 	public User getUser(String loginId, String pass) {
 		
-		String sql = "select * from user where name = ? and pass";
+		String sql = "select * from user where name = ? and password= ?";
 		try(PreparedStatement stmt = getConnection().prepareStatement(sql)) {
 			stmt.setString(1, loginId);
 			stmt.setString(2, pass);
