@@ -12,7 +12,7 @@ public class UploadController extends AbstractController {
 
 	@Override
 	public void index() {
-		loadView("upload/index");
+		forward("upload/index");
 	}
 
 	public void restaurant() {
@@ -22,7 +22,7 @@ public class UploadController extends AbstractController {
 		// model add
 		
 		// redirect to view
-		redirect(baseUrl("restaurant"));
+		redirect(url("restaurant"));
 	}
 
 	public void category() {
@@ -32,14 +32,14 @@ public class UploadController extends AbstractController {
 		// model add
 		
 		// redirect to view
-		redirect(baseUrl("upload/categories"));
+		redirect(url("upload/categories"));
 	}
 	
 	public void categories() {
 		// get data from model
 		
 		// load view
-		loadView("upload/categories");
+		forward("upload/categories");
 	}
 
 }

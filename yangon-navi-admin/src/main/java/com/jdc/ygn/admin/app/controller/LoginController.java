@@ -19,7 +19,7 @@ public class LoginController extends AbstractController {
 	public void init() throws ServletException {
 		super.init();
 		try {
-			um = new UserModel(getConnection());
+			um = new UserModel(connection());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -27,18 +27,16 @@ public class LoginController extends AbstractController {
 
 	@Override
 	public void index() {
-		loadView("login/login");
+		forward("login/login");
 	}
 	
 	public void login() {
-		User user = um.getUser(getParam("loginid"), getParam("pass"));
+		User user = um.getUser(param("loginid"), param("pass"));
 		if(null == user) {
-			System.out.println("user not found");
-			loadView("login/login");
+			forward("login/login");
 		} else {
-			System.out.println("user found");
-			setSessionData("login", user);
-			redirect(baseUrl("user"));
+			session("login", user);
+			redirect(url("user"));
 		}
 	}
 	

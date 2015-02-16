@@ -11,19 +11,19 @@ public class RestaurantController extends AbstractController{
 
 	@Override
 	public void index() {
-		loadView("restaurant/list");
+		forward("restaurant/list");
 	}
 	
 	public void create() {
-		loadView("restaurant/add");
+		forward("restaurant/add");
 	}
 	
 	public void save() {
-		loadView("restaurant/details");
+		forward("restaurant/details");
 	}
 	
 	public void edit() {
-		loadView("restaurant/edit");
+		forward("restaurant/edit");
 	}
 
 }

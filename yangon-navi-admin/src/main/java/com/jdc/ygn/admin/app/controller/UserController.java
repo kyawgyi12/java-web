@@ -13,7 +13,7 @@ public class UserController extends AbstractController {
 	public void index() {
 		// load user data
 		
-		loadView("user/home");
+		forward("user/home");
 	}
 	
 	public void logout() {
@@ -21,7 +21,7 @@ public class UserController extends AbstractController {
 		session().invalidate();
 		
 		// redirect to login page
-		redirect(baseUrl("login"));
+		redirect(url("login"));
 	}
 
 }

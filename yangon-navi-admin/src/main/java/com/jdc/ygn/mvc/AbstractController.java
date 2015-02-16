@@ -31,12 +31,12 @@ public abstract class AbstractController extends HttpServlet {
 		super.init();
 	}
 
-	protected void loadView(String... data) {
+	protected void forward(String... data) {
 		try {
 			List<String> views = new ArrayList<>();
 
 			for (String s : data) {
-				views.add(baseJsp(s));
+				views.add(jsp(s));
 			}
 			request.setAttribute("views", views);
 			getServletContext().getRequestDispatcher("/template/index.jsp")
@@ -44,16 +44,6 @@ public abstract class AbstractController extends HttpServlet {
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	private String baseJsp(String str) {
-		BaseUrl base = (BaseUrl) getServletContext().getAttribute("baseUrl");
-		return base.jsp(str);
-	}
-	
-	protected String baseUrl(String str) {
-		BaseUrl base = (BaseUrl) getServletContext().getAttribute("baseUrl");
-		return base.url(str);
 	}
 
 	protected void redirect(String path) {
@@ -64,26 +54,54 @@ public abstract class AbstractController extends HttpServlet {
 		}
 	}
 
-	protected void setRequestData(String name, Object data) {
-		request.setAttribute(name, data);
+
+	private String jsp(String str) {
+		BaseUrl base = (BaseUrl) getServletContext().getAttribute("baseUrl");
+		return base.jsp(str);
+	}
+	
+	protected String url(String str) {
+		BaseUrl base = (BaseUrl) getServletContext().getAttribute("baseUrl");
+		return base.url(str);
 	}
 
-	protected void setSessionData(String name, Object data) {
-		request.getSession(true).setAttribute(name, data);
-	}
-
-	protected String getParam(String name) {
-		return request.getParameter(name);
-	}
-
-	protected Connection getConnection() throws SQLException {
+	protected Connection connection() throws SQLException {
 		return ds.getConnection();
 	}
 	
 	protected HttpSession session() {
 		return request.getSession(true);
 	}
+	
+	protected Object session(String name) {
+		return session().getAttribute(name);
+	}
 
+	protected void session(String name, Object data) {
+		request.getSession(true).setAttribute(name, data);
+	}
+
+
+	protected void request(String name, Object data) {
+		request.setAttribute(name, data);
+	}
+	
+	protected Object request(String name) {
+		return request.getAttribute(name);
+	}
+
+	protected void application(String name, Object object) {
+		getServletContext().setAttribute(name, object);
+	}
+	
+	protected Object application(String name) {
+		return getServletContext().getAttribute(name);
+	}
+	
+	protected String param(String name) {
+		return request.getParameter(name);
+	}
+	
 	public abstract void index();
 
 	@Override
