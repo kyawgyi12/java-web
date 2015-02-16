@@ -24,8 +24,8 @@
 				<tr>
 					<td>${ item.id }</td>
 					<td>${ item.name }</td>
-					<td>${ item.address }, ${ item.township }</td>
-					<td>${ item.phones }</td>
+					<td>${ item.address }</td>
+					<td></td>
 				</tr>
 				
 			</c:forEach>
