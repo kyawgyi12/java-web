@@ -32,6 +32,9 @@ public class Phone implements Serializable{
 	public void setRestaurantId(int restaurantId) {
 		this.restaurantId = restaurantId;
 	}
+	
+	public Phone() {
+	}
 	public Phone(int id, String phone, int restaurantId) {
 		super();
 		this.id = id;

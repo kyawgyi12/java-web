@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.jdc.ygn.admin.app.model.entity.User;
-import com.jdc.ygn.mvc.BaseModel;
+import com.jdc.ygn.sql.BaseModel;
 
 public class UserModel extends BaseModel<User> {
 

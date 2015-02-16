@@ -122,7 +122,10 @@ public class SqlHelper<T> {
 			for (Field f : type.getDeclaredFields()) {
 				f.setAccessible(true);
 				String colName = f.getName();
-
+				
+				if("serialVersionUID".equals(colName))
+					continue;
+				
 				Column col = f.getDeclaredAnnotation(Column.class);
 
 				if (null != col)

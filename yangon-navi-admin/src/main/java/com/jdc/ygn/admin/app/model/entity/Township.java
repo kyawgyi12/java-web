@@ -29,7 +29,8 @@ public class Township implements Serializable{
 		this.id = id;
 		this.name = name;
 	}
-	
+	public Township() {
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

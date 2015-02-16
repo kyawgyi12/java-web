@@ -16,7 +16,11 @@ import javax.servlet.http.HttpSession;
 
 import com.jdc.ygn.admin.app.model.entity.User;
 
-@WebFilter(urlPatterns={"/user", "/user/*", "/restaurant", "/restaurant/*", "/menu", "/menu/*"})
+@WebFilter(urlPatterns={
+		"/user", "/user/*", 
+		"/restaurant", "/restaurant/*", 
+		"/menu", "/menu/*",
+		"/upload", "/upload/*"})
 public class AuthFilter implements Filter {
 
 	public void destroy() {

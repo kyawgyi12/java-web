@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.sql.DataSource;
 
 import com.jdc.ygn.admin.app.model.entity.Photo;
+import com.jdc.ygn.sql.BaseModel;
 
 @WebServlet
 public class ImageWriter extends GenericServlet {

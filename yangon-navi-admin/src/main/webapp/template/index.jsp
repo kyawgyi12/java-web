@@ -12,9 +12,12 @@
 <link href="${baseUrl.url('resources/css/flat-ui.min.css')}" rel="stylesheet">
 <link href="${baseUrl.url('resources/css/demo.css')}" rel="stylesheet">
 <link href="${baseUrl.url('resources/css/custom.css')}" rel="stylesheet">
+<link href="${baseUrl.url('resources/css/fileinput.min.css')}" rel="stylesheet">
 
 </head>
 <body data-twttr-rendered="true">
+	<script type="text/javascript"
+		src="${baseUrl.url('resources/js/jquery.min.js')}"></script>
 	<div class="container">
 		<div class="row">
 			<%@ include file="menu.jsp" %>
@@ -27,8 +30,8 @@
 	</div>
 
 	<script type="text/javascript"
-		src="${baseUrl.url('resources/js/jquery.min.js')}"></script>
-	<script type="text/javascript"
 		src="${baseUrl.url('resources/js/flat-ui.min.js')}"></script>
+	<script type="text/javascript"
+		src="${baseUrl.url('resources/js/fileinput.min.js')}"></script>
 </body>
 </html>

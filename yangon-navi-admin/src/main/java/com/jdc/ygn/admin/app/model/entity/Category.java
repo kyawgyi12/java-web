@@ -11,6 +11,10 @@ public class Category implements Serializable{
 	@Id(autoIncrease=true)
 	private int id;
 	private String name;
+	
+	public Category() {
+	}
+	
 	public Category(int id, String name) {
 		super();
 		this.id = id;

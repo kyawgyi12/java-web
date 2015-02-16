@@ -14,6 +14,9 @@ public class Menu {
 	@Column("photo_id")
 	private int photoId;
 	
+	public Menu() {
+	}
+	
 	public Menu(int id, String name, int price, int restaurantId, int photoId) {
 		super();
 		this.id = id;

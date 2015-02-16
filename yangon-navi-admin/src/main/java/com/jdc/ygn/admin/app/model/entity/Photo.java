@@ -44,6 +44,10 @@ public class Photo implements Serializable{
 	public void setRestaurantId(int restaurantId) {
 		this.restaurantId = restaurantId;
 	}
+	
+	public Photo() {
+	}
+
 	public Photo(int id, PhotoType type, byte[] photo, int restaurantId) {
 		super();
 		this.id = id;

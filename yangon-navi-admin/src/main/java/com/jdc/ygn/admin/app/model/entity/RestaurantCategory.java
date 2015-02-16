@@ -27,6 +27,8 @@ public class RestaurantCategory implements Serializable{
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
+	public RestaurantCategory() {
+	}
 	public RestaurantCategory(int restaurantId, int categoryId) {
 		super();
 		this.restaurantId = restaurantId;
