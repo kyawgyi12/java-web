@@ -11,8 +11,6 @@ public class UserController extends AbstractController {
 
 	@Override
 	public void index() {
-		// load user data
-		
 		forward("user/home");
 	}
 	

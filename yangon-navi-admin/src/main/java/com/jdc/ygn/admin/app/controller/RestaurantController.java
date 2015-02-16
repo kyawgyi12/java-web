@@ -8,9 +8,10 @@ import com.jdc.ygn.mvc.AbstractController;
 public class RestaurantController extends AbstractController{
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	public void index() {
+		
 		forward("restaurant/list");
 	}
 	

@@ -69,7 +69,7 @@ public class SqlHelper<T> {
 			throws SerialException, IllegalArgumentException,
 			IllegalAccessException, SQLException {
 		for (int i = 0; i < insertColumns.size();) {
-			Field f = idColumns.get(i);
+			Field f = insertColumns.get(i);
 			stmt.setObject(++i, getSqlType(f, t));
 		}
 	}
@@ -155,6 +155,7 @@ public class SqlHelper<T> {
 
 	private Object getSqlType(Field f, T t) throws SerialException,
 			IllegalArgumentException, IllegalAccessException, SQLException {
+		f.setAccessible(true);
 		Object obj = null;
 		// blob
 		BlobColumn blCol = f.getDeclaredAnnotation(BlobColumn.class);

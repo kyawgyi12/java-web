@@ -13,17 +13,17 @@ public class Photo implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id(autoIncrease=true)
-	private int id;
+	private long id;
 	@EnumType
 	private PhotoType type;
 	@BlobColumn
 	private byte[] photo;
 	@Column("restaurant_id")
-	private int restaurantId;
-	public int getId() {
+	private long restaurantId;
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public PhotoType getType() {
@@ -38,10 +38,10 @@ public class Photo implements Serializable{
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
-	public int getRestaurantId() {
+	public long getRestaurantId() {
 		return restaurantId;
 	}
-	public void setRestaurantId(int restaurantId) {
+	public void setRestaurantId(long restaurantId) {
 		this.restaurantId = restaurantId;
 	}
 	

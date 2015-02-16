@@ -2,7 +2,7 @@
 <div class="page-header"><h3><span class="fui-upload"></span> File Upload</h3></div>
 
 <div class="row">
-<form action="${ baseUrl.url('upload/restaurant') }" method="post" id="upload-form">
+<form action="${ baseUrl.url('upload/restaurant') }" method="post" id="upload-form" enctype="multipart/form-data">
 <div class="col-lg-3">
 	<div class="share mrl">
 		<ul>

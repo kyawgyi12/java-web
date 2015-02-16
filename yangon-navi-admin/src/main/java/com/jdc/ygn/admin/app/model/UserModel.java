@@ -21,7 +21,11 @@ public class UserModel extends BaseModel<User> {
 			stmt.setString(2, pass);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				return new User(rs.getInt(1), rs.getString(2), rs.getString(3));
+				User user = new User();
+				user.setId(rs.getLong(1));
+				user.setName(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				return user;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

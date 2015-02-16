@@ -27,7 +27,10 @@ public class LoginController extends AbstractController {
 
 	@Override
 	public void index() {
-		forward("login/login");
+		if(null == session("login"))
+			forward("login/login");
+		else
+			redirect(url("user"));
 	}
 	
 	public void login() {

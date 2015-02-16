@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 public class BaseModel<T> {
@@ -19,11 +20,12 @@ public class BaseModel<T> {
 
 	public final T insert(T t) {
 		try (PreparedStatement stmt = conn
-				.prepareStatement(help.getInsertSql())) {
+				.prepareStatement(help.getInsertSql(), Statement.RETURN_GENERATED_KEYS)) {
 			help.setInsertValue(stmt, t);
+			stmt.executeUpdate();
 			ResultSet rs = stmt.getGeneratedKeys();
 			if (rs.next())
-				return help.setIdValue(t, rs.getObject(0));
+				return help.setIdValue(t, rs.getObject(1));
 
 		} catch (IllegalArgumentException | IllegalAccessException
 				| SQLException e) {

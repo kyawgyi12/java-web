@@ -13,12 +13,13 @@ public class Restaurant implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id(autoIncrease=true)
-	private int id;
+	private long id;
 	private String name;
 	private String address;
 	@Column("township_id")
-	private int townshipId;
+	private long townshipId;
 	private String homepage;
+	@Column("discription")
 	private String description;
 	private String email;
 	
@@ -26,10 +27,10 @@ public class Restaurant implements Serializable{
 	private Date creation;
 	@DateColumn(type=DateType.Timestamp)
 	private Date modification;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -44,10 +45,10 @@ public class Restaurant implements Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getTownshipId() {
+	public long getTownshipId() {
 		return townshipId;
 	}
-	public void setTownshipId(int townshipId) {
+	public void setTownshipId(long townshipId) {
 		this.townshipId = townshipId;
 	}
 	public String getHomepage() {

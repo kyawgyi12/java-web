@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
 public abstract class AbstractController extends HttpServlet {
@@ -100,6 +101,10 @@ public abstract class AbstractController extends HttpServlet {
 	
 	protected String param(String name) {
 		return request.getParameter(name);
+	}
+	
+	protected Part file(String name) throws IOException, ServletException {
+		return request.getPart(name);
 	}
 	
 	public abstract void index();

@@ -6,31 +6,22 @@ import com.jdc.ygn.sql.Id;
 public class Menu {
 	
 	@Id(autoIncrease=true)
-	private int id;
+	private long id;
 	private String name;
-	private int price;
+	private long price;
 	@Column("restaurant_id")
-	private int restaurantId;
+	private long restaurantId;
 	@Column("photo_id")
-	private int photoId;
+	private long photoId;
 	
 	public Menu() {
 	}
 	
-	public Menu(int id, String name, int price, int restaurantId, int photoId) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.price = price;
-		this.restaurantId = restaurantId;
-		this.photoId = photoId;
-	}
-
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -42,27 +33,27 @@ public class Menu {
 		this.name = name;
 	}
 
-	public int getPrice() {
+	public long getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 
-	public int getRestaurantId() {
+	public long getRestaurantId() {
 		return restaurantId;
 	}
 
-	public void setRestaurantId(int restaurantId) {
+	public void setRestaurantId(long restaurantId) {
 		this.restaurantId = restaurantId;
 	}
 
-	public int getPhotoId() {
+	public long getPhotoId() {
 		return photoId;
 	}
 
-	public void setPhotoId(int photoId) {
+	public void setPhotoId(long photoId) {
 		this.photoId = photoId;
 	}
 
