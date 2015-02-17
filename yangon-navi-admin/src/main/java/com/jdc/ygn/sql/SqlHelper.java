@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 
 public class SqlHelper<T> {
@@ -130,8 +129,16 @@ public class SqlHelper<T> {
 
 				if (null != col)
 					colName = col.value();
+				
+				// enum
+				EnumType enCol = f.getDeclaredAnnotation(EnumType.class);
+				if(null != enCol) {
+					Object obj = f.getType().getEnumConstants()[res.getInt(colName)];
+					f.set(t, obj);
+				} else {
+					f.set(t, res.getObject(colName));
+				}
 
-				f.set(t, res.getObject(colName));
 			}
 
 			return t;
@@ -157,16 +164,12 @@ public class SqlHelper<T> {
 			IllegalArgumentException, IllegalAccessException, SQLException {
 		f.setAccessible(true);
 		Object obj = null;
-		// blob
-		BlobColumn blCol = f.getDeclaredAnnotation(BlobColumn.class);
 		// date
 		DateColumn dtCol = f.getDeclaredAnnotation(DateColumn.class);
 		// enum
 		EnumType enCol = f.getDeclaredAnnotation(EnumType.class);
 
-		if (null != blCol) {
-			obj = new SerialBlob((byte[]) f.get(t));
-		} else if (null != dtCol) {
+		if (null != dtCol) {
 			DateType dt = dtCol.type();
 			Date d = (Date) f.get(t);
 			if(dt.equals(DateType.Timestamp)) {
@@ -175,7 +178,7 @@ public class SqlHelper<T> {
 				obj = new Timestamp(d.getTime());
 			}
 		} else if (null != enCol) {
-			Field [] fs = f.getClass().getEnumConstants();
+			Object [] fs = f.getType().getEnumConstants();
 			for(int i=0; i < fs.length; i++) {
 				if(fs[i].equals(f.get(t))) {
 					obj = i;

@@ -17,7 +17,12 @@
 </head>
 <body data-twttr-rendered="true">
 	<script type="text/javascript"
-		src="${baseUrl.url('resources/js/jquery.min.js')}"></script>
+		src="${baseUrl.url('resources/js/jquery-2.1.1.min.js')}"></script>
+	<script type="text/javascript"
+		src="${baseUrl.url('resources/js/flat-ui.min.js')}"></script>
+	<script type="text/javascript"
+		src="${baseUrl.url('resources/js/fileinput.min.js')}"></script>
+
 	<div class="container">
 		<div class="row">
 			<%@ include file="menu.jsp" %>
@@ -29,9 +34,5 @@
 
 	</div>
 
-	<script type="text/javascript"
-		src="${baseUrl.url('resources/js/flat-ui.min.js')}"></script>
-	<script type="text/javascript"
-		src="${baseUrl.url('resources/js/fileinput.min.js')}"></script>
 </body>
 </html>

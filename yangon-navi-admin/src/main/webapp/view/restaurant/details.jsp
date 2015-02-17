@@ -29,21 +29,50 @@
 							</c:forEach>
 						</li>
 					</ul>
-					<a href="#" class="btn btn-danger"><span class="fui-new"></span> EDIT</a>
+					<c:url value="edit" var="edit">
+						<c:param name="id" value="${ item.restaurant.id }"></c:param>
+					</c:url>
+					<a href="${ edit }" class="btn btn-danger"><span class="fui-new"></span> EDIT</a>
 				</div>
             </div>
 		</div>
 	</div>
 </div>
 
+<c:url value="/photo/add" var="addPhoto">
+	<c:param name="id" value="${ item.restaurant.id }"></c:param>
+</c:url>
 <div class="row">
 	<div class="page-header">
-		<h4>Decoration Photo &nbsp;<a href="#" class="btn btn-default palette-carrot"><span class="fui-plus" ></span>&nbsp; ADD</a></h4>
+		<h4>Photo &nbsp;
+		<a href="${ addPhoto }" class="btn btn-default palette-carrot">
+			<span class="fui-plus" ></span>
+			&nbsp; ADD</a>
+		</h4>
 	</div>
 </div>
 
+<c:url value="/menu/add" var="addMenu">
+	<c:param name="id" value="${ item.restaurant.id }"></c:param>
+</c:url>
 <div class="row">
 	<div class="page-header">
-		<h4>Menu &nbsp;<a href="#" class="btn btn-default palette-orange"><span class="fui-plus" ></span>&nbsp; ADD</a></h4>
+		<h4>Menu &nbsp;
+		<a href="#" class="btn btn-default palette-orange" id="menu-add">
+			<span class="fui-plus" ></span>
+			&nbsp; ADD
+		</a></h4>
 	</div>
 </div>
+<script type="text/javascript">
+<!--
+	$(function() {
+		$('#menu-add').click(function() {
+			$('#create-menu-model').modal('show');
+		});
+	});
+//-->
+</script>
+
+<%@include file="../menu/upload.jsp" %>
+
