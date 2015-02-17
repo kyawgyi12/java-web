@@ -89,8 +89,12 @@ public class BaseModel<T> {
 		return null;
 	}
 	
-	protected Connection getConnection() {
+	protected Connection connection() {
 		return conn;
+	}
+	
+	protected SqlHelper<T> helper() {
+		return this.help;
 	}
 
 }

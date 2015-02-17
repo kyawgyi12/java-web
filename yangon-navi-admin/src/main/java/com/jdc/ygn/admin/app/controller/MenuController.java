@@ -11,8 +11,8 @@ public class MenuController extends AbstractController {
 
 	@Override
 	public void index() {
-		// TODO Auto-generated method stub
 
+		
 	}
 
 }

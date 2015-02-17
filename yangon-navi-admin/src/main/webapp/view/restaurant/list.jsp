@@ -22,10 +22,17 @@
 			<c:forEach items="${ list }" var="item">
 
 				<tr>
-					<td>${ item.id }</td>
-					<td>${ item.name }</td>
-					<td>${ item.address }</td>
-					<td></td>
+					<td><a href="${ baseUrl.url('restaurant/details?') }id=${ item.restaurant.id }">${ item.restaurant.id }</a></td>
+					<td>${ item.restaurant.name }</td>
+					<td>${ item.restaurant.address }, ${ item.township.name }</td>
+					<td>
+						<c:forEach items="${ item.phones }" var="item" varStatus="sts">
+							<c:if test="${ sts.index gt 0 }">
+								<c:out value=", "></c:out>
+							</c:if>
+							<c:out value="${ item.phone }"></c:out>
+						</c:forEach>
+					</td>
 				</tr>
 				
 			</c:forEach>

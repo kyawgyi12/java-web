@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 
 import com.jdc.ygn.admin.app.model.RestaurantModel;
+import com.jdc.ygn.admin.app.view.RestaurantVO;
 import com.jdc.ygn.mvc.AbstractController;
 
 @WebServlet(urlPatterns={"/restaurant", "/restaurant/*"})
@@ -26,8 +27,18 @@ public class RestaurantController extends AbstractController{
 	
 	@Override
 	public void index() {
-		request("list", model.getAll());
+		request("list", model.getAllVO());
 		forward("restaurant/list");
+	}
+	
+	public void details() {
+		RestaurantVO vo = vo();
+		if(vo != null) {
+			request("item", vo);
+			forward("restaurant/details");
+		} else {
+			// error page
+		}
 	}
 	
 	public void create() {
@@ -35,11 +46,34 @@ public class RestaurantController extends AbstractController{
 	}
 	
 	public void save() {
-		forward("restaurant/details");
+		RestaurantVO vo = vo();
+		if(vo != null) {
+			// edit
+			request("item", vo);
+			forward("restaurant/edit");
+		} else {
+			// add new
+		}
+		
+		redirect(url("restaurant/details?id=" + vo.getRestaurant().getId()));
 	}
 	
 	public void edit() {
-		forward("restaurant/edit");
+		RestaurantVO vo = vo();
+		if(vo != null) {
+			request("item", vo);
+			forward("restaurant/edit");
+		} else {
+			// error page
+		}
+	}
+	
+	private RestaurantVO vo() {
+		String strId = param("id");
+		if(null != strId && !strId.isEmpty()) {
+			return model.findViewById(Long.parseLong(strId));
+		}
+		return null;
 	}
 
 }

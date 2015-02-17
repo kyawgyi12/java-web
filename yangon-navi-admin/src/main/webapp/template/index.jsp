@@ -11,8 +11,8 @@
 <link href="${baseUrl.url('resources/css/bootstrap.min.css')}" rel="stylesheet">
 <link href="${baseUrl.url('resources/css/flat-ui.min.css')}" rel="stylesheet">
 <link href="${baseUrl.url('resources/css/demo.css')}" rel="stylesheet">
-<link href="${baseUrl.url('resources/css/custom.css')}" rel="stylesheet">
 <link href="${baseUrl.url('resources/css/fileinput.min.css')}" rel="stylesheet">
+<link href="${baseUrl.url('resources/css/custom.css')}" rel="stylesheet">
 
 </head>
 <body data-twttr-rendered="true">
