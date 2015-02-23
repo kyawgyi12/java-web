@@ -21,8 +21,8 @@ public abstract class AbstractController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private HttpServletRequest request;
-	private HttpServletResponse response;
+	protected HttpServletRequest request;
+	protected HttpServletResponse response;
 
 	@Resource(name = "jdbc/yangon_navi")
 	private DataSource ds;

@@ -21,8 +21,9 @@
 						data-toggle="dropdown"><span class="fui-home"></span>
 							Restaurant <b class="caret"></b></a> <span class="dropdown-arrow"></span>
 						<ul class="dropdown-menu">
-							<li><a href="${baseUrl.url('restaurant')}"><span class="fui-list"></span> List</a></li>
+							<li><a href="${baseUrl.url('restaurant')}"><span class="fui-list"></span> Restaurant List</a></li>
 							<li><a href="${baseUrl.url('restaurant/create')}"><span class="fui-plus"></span> Add New</a></li>
+							<li><a href="${baseUrl.url('category')}"><span class="fui-list"></span> Category List</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

@@ -1,6 +1,8 @@
 package com.jdc.ygn.admin.app.model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -48,6 +50,31 @@ public class RestaurantModel extends BaseModel<Restaurant> {
 	}
 
 	public List<RestaurantVO> search(String keyword) {
+		return null;
+	}
+	
+	public List<Restaurant> findByCategory(long categoryId) {
+		String sql = "select * from restaurant where id in "+
+					"(select restaurant_id from restaurant_category where category_id = ?)";
+		
+		try (PreparedStatement stmt = connection().prepareStatement(sql)) {
+			stmt.setLong(1, categoryId);
+			return getObjects(stmt.executeQuery());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return null;
+	}
+	
+	public List<Restaurant> findByName(String name) {
+		String sql = "select * from restaurant where name = ?";
+		try (PreparedStatement stmt = connection().prepareStatement(sql)) {
+			stmt.setString(1, name);
+			return getObjects(stmt.executeQuery());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
 		return null;
 	}
 

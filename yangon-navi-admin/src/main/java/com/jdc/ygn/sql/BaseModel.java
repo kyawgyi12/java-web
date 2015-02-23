@@ -89,6 +89,14 @@ public class BaseModel<T> {
 		return null;
 	}
 	
+	protected T getObject(ResultSet rs) {
+		return help.getObject(rs);
+	}
+	
+	protected List<T> getObjects(ResultSet rs) throws SQLException {
+		return help.getObjects(rs);
+	}
+	
 	protected Connection connection() {
 		return conn;
 	}

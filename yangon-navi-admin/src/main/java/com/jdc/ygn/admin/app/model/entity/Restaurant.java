@@ -23,6 +23,8 @@ public class Restaurant implements Serializable{
 	private String description;
 	private String email;
 	
+	private String opening;
+	
 	@DateColumn(type=DateType.Timestamp)
 	private Date creation;
 	@DateColumn(type=DateType.Timestamp)
@@ -81,6 +83,12 @@ public class Restaurant implements Serializable{
 	public void setModification(Date modification) {
 		this.modification = modification;
 	}
+	public String getOpening() {
+		return opening;
+	}
+	public void setOpening(String opening) {
+		this.opening = opening;
+	}
 	
-	
+		
 }

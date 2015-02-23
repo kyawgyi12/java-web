@@ -20,7 +20,7 @@ import com.jdc.ygn.admin.app.model.entity.User;
 		"/user", "/user/*", 
 		"/restaurant", "/restaurant/*", 
 		"/menu", "/menu/*",
-		"/upload", "/upload/*"})
+		"/upload", "/upload/*"}, asyncSupported=true)
 public class AuthFilter implements Filter {
 
 	public void destroy() {
