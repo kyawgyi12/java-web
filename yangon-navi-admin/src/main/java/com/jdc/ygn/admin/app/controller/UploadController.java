@@ -153,6 +153,35 @@ public class UploadController extends AbstractController {
 
 			String line = null;
 			
+			CategoryModel cModel = new CategoryModel(conn);
+			
+			while (null != (line = bf.readLine())) {
+				Category c = new Category();
+				c.setName(line.trim());
+				cModel.insert(c);
+			}
+			application("category", cModel.getAll());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		// redirect to view
+		redirect(url(""));
+	}
+	
+	
+	public void rest_category() throws IOException, ServletException {
+		// get upload file from request
+		Part file = file("load-file");
+
+		// model add
+		try (Connection conn = connection();
+				BufferedReader bf = new BufferedReader(new InputStreamReader(
+				file.getInputStream()))) {
+
+			String line = null;
+			
 			RestaurantModel rModel = new RestaurantModel(conn);
 			CategoryModel cModel = new CategoryModel(conn);
 			BaseModel<RestaurantCategory> rcModel = new BaseModel<RestaurantCategory>(
@@ -161,21 +190,27 @@ public class UploadController extends AbstractController {
 			while (null != (line = bf.readLine())) {
 				String[] strs = line.split("\t");
 
-				if (strs.length == 2) {
+				if (strs.length >= 2) {
 					// find restaurant
 					List<Restaurant> resList = rModel.findByName(strs[0]);
+					
+					for(int i=1; i < strs.length; i++) {
+						String tmp = strs[i].trim();
+						if(null != tmp && !tmp.isEmpty()) {
+							// find category
+							List<Category> cList = cModel.findByName(tmp);
 
-					// find category
-					List<Category> cList = cModel.findByName(strs[1]);
-
-					if (resList.size() > 0 && cList.size() > 0) {
-						// add to restaurant_category
-						RestaurantCategory rc = new RestaurantCategory();
-						rc.setCategoryId(cList.get(0).getId());
-						rc.setRestaurantId(resList.get(0).getId());
-						
-						rcModel.insert(rc);
+							if (resList.size() > 0 && cList.size() > 0) {
+								// add to restaurant_category
+								RestaurantCategory rc = new RestaurantCategory();
+								rc.setCategoryId(cList.get(0).getId());
+								rc.setRestaurantId(resList.get(0).getId());
+								
+								rcModel.insert(rc);
+							}
+						}
 					}
+
 				}
 
 			}

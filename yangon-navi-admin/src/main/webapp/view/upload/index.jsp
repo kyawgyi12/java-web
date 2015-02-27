@@ -8,16 +8,23 @@
 		<ul>
 			<li>
 				<label class="radio">
-        		<input id="restaurant" class="custom-radio" name="optionsRadios" id="optionsRadios1" value="option1" data-toggle="radio" type="radio" checked="checked">
+        		<input id="restaurant" class="custom-radio" name="optionsRadios" value="option1" data-toggle="radio" type="radio" checked="checked">
         		<span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
        			Restaurant
       			</label>
        				</li>
 			<li>
 				<label class="radio">
-         		<input id="category" class="custom-radio" name="optionsRadios" id="optionsRadios1" value="option1" data-toggle="radio" type="radio">
+         		<input id="category" class="custom-radio" name="optionsRadios" value="option1" data-toggle="radio" type="radio">
          		<span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
         		 Category
+       			</label>
+       		</li>
+			<li>
+				<label class="radio">
+         		<input id="rest_category" class="custom-radio" name="optionsRadios" value="option1" data-toggle="radio" type="radio">
+         		<span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+        		 Res Cat
        			</label>
        		</li>
 		</ul>
@@ -41,6 +48,10 @@
 		
 		$('#category').click(function() {
 			$('#upload-form').attr('action', '${baseUrl.url("upload/category")}');
+		});
+
+		$('#rest_category').click(function() {
+			$('#upload-form').attr('action', '${baseUrl.url("upload/rest_category")}');
 		});
 	}
 	);

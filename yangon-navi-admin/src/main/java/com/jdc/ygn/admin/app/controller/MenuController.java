@@ -1,7 +1,16 @@
 package com.jdc.ygn.admin.app.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -55,13 +64,15 @@ public class MenuController extends AbstractController {
 
 			if(null != photoFile) {
 				Photo photo = new Photo();
+				
 				photo.setRestaurantId(Long.parseLong(restIdStr));
 				photo.setType(PhotoType.Menu);
-
-				byte[] data = new byte[photoFile.getInputStream().available()];
-				photoFile.getInputStream().read(data);
-				System.out.println(data.length);
-				photo.setPhoto(data);
+				photo.setPhoto(getFileName(photo.getRestaurantId(), photo.getName()));
+				
+				// write photo to upload folder
+				Path path = Paths.get(getServletContext().getRealPath("/upload_data"), "menu", photo.getPhoto());
+				Files.copy(photoFile.getInputStream(), path);
+				
 				photo.setName(menu.getName());
 				
 				photo = photoModel.insert(photo);
@@ -73,6 +84,13 @@ public class MenuController extends AbstractController {
 		
 		redirect(url("restaurant/details?id=" + restIdStr));
 
+	}
+	
+	private String getFileName(long restaurantId, String menu) {
+		// restaurant (###0) _ menu _ time . extension (PNG)
+		DecimalFormat restId = new DecimalFormat("00000");
+		DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+		return String.format("%s_%s_%s.png", restId.format(restaurantId), menu, df.format(new Date()));
 	}
 
 }

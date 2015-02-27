@@ -2,7 +2,6 @@ package com.jdc.ygn.admin.app.model.entity;
 
 import java.io.Serializable;
 
-import com.jdc.ygn.sql.BlobColumn;
 import com.jdc.ygn.sql.Column;
 import com.jdc.ygn.sql.EnumType;
 import com.jdc.ygn.sql.Id;
@@ -16,8 +15,8 @@ public class Photo implements Serializable{
 	private long id;
 	@EnumType
 	private PhotoType type;
-	@BlobColumn
-	private byte[] photo;
+
+	private String photo;
 	@Column("restaurant_id")
 	private long restaurantId;
 	
@@ -41,10 +40,10 @@ public class Photo implements Serializable{
 	public void setType(PhotoType type) {
 		this.type = type;
 	}
-	public byte[] getPhoto() {
+	public String getPhoto() {
 		return photo;
 	}
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
 	public long getRestaurantId() {
@@ -57,7 +56,7 @@ public class Photo implements Serializable{
 	public Photo() {
 	}
 
-	public Photo(int id, PhotoType type, byte[] photo, int restaurantId) {
+	public Photo(int id, PhotoType type, String photo, int restaurantId) {
 		super();
 		this.id = id;
 		this.type = type;
