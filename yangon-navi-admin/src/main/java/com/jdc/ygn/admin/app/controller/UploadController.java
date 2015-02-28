@@ -16,7 +16,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Part;
 
 import com.jdc.ygn.admin.app.model.CategoryModel;
-import com.jdc.ygn.admin.app.model.RestaurantModel;
 import com.jdc.ygn.admin.app.model.entity.Category;
 import com.jdc.ygn.admin.app.model.entity.Phone;
 import com.jdc.ygn.admin.app.model.entity.Rank;
@@ -182,7 +181,6 @@ public class UploadController extends AbstractController {
 
 			String line = null;
 			
-			RestaurantModel rModel = new RestaurantModel(conn);
 			CategoryModel cModel = new CategoryModel(conn);
 			BaseModel<RestaurantCategory> rcModel = new BaseModel<RestaurantCategory>(
 					RestaurantCategory.class, conn);
@@ -190,21 +188,21 @@ public class UploadController extends AbstractController {
 			while (null != (line = bf.readLine())) {
 				String[] strs = line.split("\t");
 
-				if (strs.length >= 2) {
+				if (strs.length > 2) {
 					// find restaurant
-					List<Restaurant> resList = rModel.findByName(strs[0]);
+					long resId = Long.parseLong(strs[0]);
 					
-					for(int i=1; i < strs.length; i++) {
+					for(int i=2; i < strs.length; i++) {
 						String tmp = strs[i].trim();
 						if(null != tmp && !tmp.isEmpty()) {
 							// find category
 							List<Category> cList = cModel.findByName(tmp);
 
-							if (resList.size() > 0 && cList.size() > 0) {
+							if (cList.size() > 0) {
 								// add to restaurant_category
 								RestaurantCategory rc = new RestaurantCategory();
 								rc.setCategoryId(cList.get(0).getId());
-								rc.setRestaurantId(resList.get(0).getId());
+								rc.setRestaurantId(resId);
 								
 								rcModel.insert(rc);
 							}
