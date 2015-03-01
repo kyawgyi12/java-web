@@ -166,7 +166,7 @@ public class UploadController extends AbstractController {
 		}
 		
 		// redirect to view
-		redirect(url(""));
+		redirect(url("category/list"));
 	}
 	
 	

@@ -13,12 +13,12 @@ import com.jdc.ygn.admin.app.view.RestaurantVO;
 import com.jdc.ygn.sql.BaseModel;
 
 public class RestaurantModel extends BaseModel<Restaurant> {
-	
+
 	private final BaseModel<Township> tsModel;
 	private final MenuModel menuModel;
 	private final PhoneModel phoneModel;
 	private final PhotoModel photoModel;
-	
+
 	private Function<Restaurant, RestaurantVO> converter;
 
 	public RestaurantModel(Connection conn) {
@@ -27,7 +27,7 @@ public class RestaurantModel extends BaseModel<Restaurant> {
 		tsModel = new BaseModel<Township>(Township.class, conn);
 		phoneModel = new PhoneModel(conn);
 		photoModel = new PhotoModel(conn);
-		
+
 		converter = a -> {
 			RestaurantVO vo = new RestaurantVO();
 			vo.setRestaurant(a);
@@ -44,29 +44,37 @@ public class RestaurantModel extends BaseModel<Restaurant> {
 	}
 
 	public List<RestaurantVO> getAllVO() {
-		return getAll().stream()
-				.map(converter)
-				.collect(Collectors.toList());
+		return getAll().stream().map(converter).collect(Collectors.toList());
 	}
 
 	public List<RestaurantVO> search(String keyword) {
+		String sql = "select * from restaurant where name = ? or name like ?";
+		try (PreparedStatement stmt = connection().prepareStatement(sql)) {
+			stmt.setObject(1, keyword);
+			stmt.setObject(2, keyword + "%");
+			return getObjects(stmt.executeQuery()).stream().map(converter)
+					.collect(Collectors.toList());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		return null;
 	}
-	
+
 	public List<Restaurant> findByCategory(long categoryId) {
-		String sql = "select * from restaurant where id in "+
-					"(select restaurant_id from restaurant_category where category_id = ?)";
-		
+		String sql = "select * from restaurant where id in "
+				+ "(select restaurant_id from restaurant_category where category_id = ?)";
+
 		try (PreparedStatement stmt = connection().prepareStatement(sql)) {
 			stmt.setLong(1, categoryId);
 			return getObjects(stmt.executeQuery());
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
-		
+		}
+
 		return null;
 	}
-	
+
 	public List<Restaurant> findByName(String name) {
 		String sql = "select * from restaurant where name = ?";
 		try (PreparedStatement stmt = connection().prepareStatement(sql)) {
@@ -74,7 +82,7 @@ public class RestaurantModel extends BaseModel<Restaurant> {
 			return getObjects(stmt.executeQuery());
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		}
 		return null;
 	}
 

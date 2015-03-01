@@ -8,7 +8,6 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
 
-import com.jdc.ygn.admin.app.model.entity.Category;
 import com.jdc.ygn.admin.app.model.entity.Township;
 import com.jdc.ygn.sql.BaseModel;
 
@@ -28,9 +27,6 @@ public class CommonDataUploadListener implements ServletContextListener {
 			BaseModel<Township> tspModel = new BaseModel<Township>(Township.class, ds.getConnection());
 			sce.getServletContext().setAttribute("townships", tspModel.getAll());
 			
-			// categories
-			BaseModel<Category> catModel = new BaseModel<Category>(Category.class, ds.getConnection());
-			sce.getServletContext().setAttribute("categories", catModel.getAll());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

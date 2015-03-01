@@ -3,7 +3,7 @@
 
 <div class="row">
 <form action="${ baseUrl.url('upload/restaurant') }" method="post" id="upload-form" enctype="multipart/form-data">
-<div class="col-lg-3">
+<div class="col-sm-3">
 	<div class="share mrl">
 		<ul>
 			<li>
@@ -31,7 +31,7 @@
 		<span class="btn btn-primary btn-block btn-large">File Type</span>
 	</div>
 </div>
-<div class="col-lg-9">
+<div class="col-sm-9">
 	<div class="form-group">
 	<label class="demo-panel-title"><span class="fui-clip"></span> Select file to upload</label>
 	<input type="file" class="file" name="load-file" />

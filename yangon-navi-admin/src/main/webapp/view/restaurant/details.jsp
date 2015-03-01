@@ -1,11 +1,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-sm-6">
 		<img src="${ baseUrl.url('resources/img/restaurant-clip-art-3.png') }" alt="${ item.restaurant.name }" class="img-rounded img-responsive">	
 	</div>
-	<div class="col-lg-6">
+	<div class="col-sm-6">
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-sm-12">
 				<div class="footer-banner">
 					<h3 class="footer-title">${ item.restaurant.name }</h3>
 					<ul>

@@ -1,7 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
-<html>
 <div class="col-xs-12">
 	<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
 		<div class="navbar-header">
@@ -23,18 +21,20 @@
 						<ul class="dropdown-menu">
 							<li><a href="${baseUrl.url('restaurant')}"><span class="fui-list"></span> Restaurant List</a></li>
 							<li><a href="${baseUrl.url('restaurant/create')}"><span class="fui-plus"></span> Add New</a></li>
-							<li><a href="${baseUrl.url('category')}"><span class="fui-list"></span> Category List</a></li>
-						</ul></li>
+							<li><a href="${baseUrl.url('category')}"><span class="fui-list"></span> Group By Category</a></li>
+						</ul>
+					</li>
+					<li><a href="${baseUrl.url('category/list')}"><span class="fui-list"></span> Categories</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="${baseUrl.url('user/logout')}"><span
 							class="fui-exit"></span> Logout</a></li>
 				</ul>
-				<form class="navbar-form navbar-right" action="#" role="search">
+				<form class="navbar-form navbar-right" action="${ baseUrl.url('restaurant/search') }">
 					<div class="form-group">
 						<div class="input-group">
 							<input class="form-control" id="navbarInput-01"
-								placeholder="Search" type="search"> <span
+								placeholder="Search" type="search" name="keyword"> <span
 								class="input-group-btn">
 								<button type="submit" class="btn">
 									<span class="fui-search"></span>
@@ -50,4 +50,3 @@
 	</nav>
 	<!-- /navbar -->
 </div>
-</html>

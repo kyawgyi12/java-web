@@ -1,21 +1,17 @@
-package com.jdc.ygn.mvc;
+package com.jdc.jmvc;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import javax.sql.DataSource;
 
 public abstract class AbstractController extends HttpServlet {
 
@@ -23,9 +19,6 @@ public abstract class AbstractController extends HttpServlet {
 
 	protected HttpServletRequest request;
 	protected HttpServletResponse response;
-
-	@Resource(name = "jdbc/yangon_navi")
-	private DataSource ds;
 
 	@Override
 	public void init() throws ServletException {
@@ -66,10 +59,6 @@ public abstract class AbstractController extends HttpServlet {
 		return base.url(str);
 	}
 
-	protected Connection connection() throws SQLException {
-		return ds.getConnection();
-	}
-	
 	protected HttpSession session() {
 		return request.getSession(true);
 	}
