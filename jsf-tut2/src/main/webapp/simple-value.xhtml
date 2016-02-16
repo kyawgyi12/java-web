@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		<ui:define name="content">
+			<p:panel>
+				<f:facet name="header">Student List</f:facet>
+				
+				<p:dataTable value="#{allStudents}" var="student">
+				
+					<p:column headerText="Name">
+						#{student.name}
+					</p:column>
+					
+					<p:column headerText="Class Name">
+						<h:outputText value="#{student.course}" >
+							<f:converter converterId="courseConverter" />						
+						</h:outputText>
+					</p:column>
+					
+					<p:column headerText="Education">
+						#{student.education.value}
+					</p:column>
+
+					<p:column headerText="Phone">
+						#{student.phone}
+					</p:column>
+					
+					<p:column headerText="Email">
+						#{student.email}
+					</p:column>
+				</p:dataTable>
+			</p:panel>	
+		</ui:define>
+	</ui:composition>
+</html>

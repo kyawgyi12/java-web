@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<title>Contact List</title>
+</h:head> 
+<body> 
+<h1>Contact List</h1>
+
+<p:dataTable value="#{contactController.contactList}" var="c">
+
+	<p:column headerText="Name">#{c.name}</p:column>
+	
+	<p:column headerText="Phone">
+		<h:outputText value="#{c.phone}" />
+	</p:column>
+	
+	<p:column headerText="Email">
+		<h:outputText value="#{c.mail}" />
+	</p:column>
+	
+</p:dataTable>
+
+<p:link value="Create Contact >" outcome="create"></p:link>
+</body> 
+</html>

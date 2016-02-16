@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<title>Create Contact</title>
+</h:head> 
+<body> 
+	<h1>Create Contact</h1>
+	
+	<h:form>
+		<h:panelGrid columns="2">
+
+			<h:outputLabel value="Name" />
+			<p:inputText value="#{contactController.newContact.name}" placeholder="Enter Name"></p:inputText>
+
+			<h:outputLabel value="Date of Birth" />
+			<p:inputText value="#{contactController.tmpDate}" placeholder="Enter Date of Birth" type="date"></p:inputText>
+
+			<h:outputLabel value="Phone" />
+			<p:inputText value="#{contactController.newContact.phone}" placeholder="Enter Phone"></p:inputText>
+
+			<h:outputLabel value="Email" />
+			<p:inputText value="#{contactController.newContact.mail}" placeholder="Enter Email"></p:inputText>
+
+			<h:outputLabel value="Address" />
+			<p:inputTextarea value="#{contactController.newContact.address}" placeholder="Enter Address" cols="40" rows="3"></p:inputTextarea>
+			
+			<h:panelGroup></h:panelGroup>
+			<h:panelGroup>
+				<p:button outcome="create" value="Clear"></p:button>
+				<p:commandButton value="Create" ajax="false" action="#{contactController.create()}"></p:commandButton>
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>

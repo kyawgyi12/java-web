@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body>
+
+	<p:layout>
+		<p:layoutUnit position="north">
+			<h:outputText value="JSF Tutorial 2" />
+		</p:layoutUnit>
+		<p:layoutUnit position="west" closable="true" header="EL Expressions">
+			<p:menu>
+				<p:submenu label="Objects And Attributes">
+					<p:menuitem value="Simple Values" outcome="index" />
+					<p:menuitem value="Collections" outcome="simple-value" />
+					<p:menuitem value="Enum Types" outcome="index" />
+				</p:submenu>
+				<p:submenu label="Method Evaluation">
+					<p:menuitem value="Without Parameter" outcome="index" />
+					<p:menuitem value="Use Parameter" outcome="simple-value" />
+					<p:menuitem value="Use Return Type" outcome="index" />
+				</p:submenu>
+				<p:submenu label="Java 8 Features">
+					<p:menuitem value="Lambda Expression" outcome="index" />
+					<p:menuitem value="Stream API" outcome="index" />
+				</p:submenu>
+			</p:menu>
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<ui:insert name="content">
+				<h:outputText value="Default Content"></h:outputText>
+			</ui:insert>
+		</p:layoutUnit>
+	
+	</p:layout> 
+
+</body> 
+</html>

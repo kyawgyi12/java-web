@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<title>Contact Details</title>
+</h:head> 
+<body> 
+
+<h:panelGrid columns="2">
+
+	<h:outputLabel value="Name" />
+	<h:outputText value="#{contactDetails.contact.name}" />
+
+	<h:outputLabel value="Date of Birth" />
+	<h:outputText value="#{contactDetails.contact.dob}" />
+
+	<h:outputLabel value="Phone" />
+	<h:outputText value="#{contactDetails.contact.phone}" />
+
+	<h:outputLabel value="Email" />
+	<h:outputText value="#{contactDetails.contact.mail}" />
+
+	<h:outputLabel value="Address" />
+	<h:outputText value="#{contactDetails.contact.address}" />
+
+	<h:panelGroup></h:panelGroup>	
+	<h:panelGroup>
+		<p:button outcome="edit" value="Edit">
+			<f:param name="id" value="#{contactDetails.contact.id}"></f:param>
+		</p:button>
+		<p:button outcome="list" value="Go To List"></p:button>
+	</h:panelGroup>
+
+</h:panelGrid>
+</body> 
+</html>

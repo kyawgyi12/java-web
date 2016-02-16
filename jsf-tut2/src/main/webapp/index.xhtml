@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="content">
+			<p:panel header="Add Student">
+			<h:form>
+				<p:messages showSummary="false" showDetail="true"></p:messages>
+				<h:panelGrid columns="2">
+
+					<h:outputLabel value="Name" />
+					<p:inputText value="#{simpleValueBean.student.name}" />
+						
+					<h:outputLabel value="Course" />
+					
+					<p:selectOneRadio
+						value="#{simpleValueBean.student.course}" 
+						layout="pageDirection"
+						required="true" requiredMessage="You need to select one of Course." >
+						<f:converter converterId="courseConverter" />
+						<f:selectItems value="#{courses}" var="c" itemLabel="#{c.name}" itemValue="#{c}"></f:selectItems>
+					</p:selectOneRadio>
+					
+					<h:outputLabel value="Education" />
+					<p:selectOneButton value="#{simpleValueBean.student.education}" rendered="true" requiredMessage="You need to select Education">
+						<f:converter converterId="eduConverter" />
+						<f:selectItems value="#{educations}" var="edu" itemValue="edu" 
+							itemLabel="#{edu.value}"></f:selectItems>
+					</p:selectOneButton>
+					
+					<h:outputLabel value="Phone" />
+					<p:inputText value="#{simpleValueBean.student.phone}" />
+					
+					<h:outputLabel value="Email" />
+					<p:inputText value="#{simpleValueBean.student.email}" />
+
+					<h:outputLabel value="Address" />
+					<p:inputTextarea value="#{simpleValueBean.student.address}" cols="50"/>
+
+					<h:panelGroup></h:panelGroup>
+					<h:panelGroup>
+						<p:button value="Clear" outcome="index" />
+						<p:commandButton ajax="false" action="#{simpleValueBean.addStudent()}" value="Add New"></p:commandButton>
+					</h:panelGroup>
+				</h:panelGrid>			
+			</h:form>
+			</p:panel>
+
+		</ui:define>
+	</ui:composition>
+	
+</html>

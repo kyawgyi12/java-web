@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<title>Edit Contact</title>
+</h:head> 
+<body> 
+
+	<h:form>
+		<h:panelGrid columns="2">
+			
+			<h:outputLabel value="Name" />
+			<p:inputText value="#{contactEdit.contact.name}"></p:inputText>
+			
+			<h:outputLabel value="Date of Birth" />
+			<p:inputText value="#{contactEdit.contact.dob}" placeholder="Enter Date of Birth(yyyy-MM-dd)" type="date">
+				<f:convertDateTime pattern="yyyy-MM-dd"/>
+			</p:inputText>
+			
+			<h:outputLabel value="Phone" />
+			<p:inputText value="#{contactEdit.contact.phone}"></p:inputText>
+			
+			<h:outputLabel value="Email" />
+			<p:inputText value="#{contactEdit.contact.mail}"></p:inputText>
+			
+			<h:outputLabel value="Address" />
+			<p:inputTextarea value="#{contactEdit.contact.address}"></p:inputTextarea>
+			
+			<h:panelGroup></h:panelGroup>
+			<p:commandButton ajax="false" value="Save" action="#{contactEdit.save()}"></p:commandButton>
+			
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>
