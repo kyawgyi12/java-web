@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login Form</title>
+</head>
+<body>
+
+<h1>Login Form</h1>
+
+<form action="/servlet-tut5/LoginServlet" method="post">
+<table>
+	<tr>
+		<td>Name</td>
+		<td><input type="text" name="loginId" placeholder="Login ID" /></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><input type="password" name="pass" placeholder="Password" /></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<input type="reset" value="Clear" /> 
+			<input type="submit" value="Login" /> 
+		</td>
+	</tr>
+</table>
+</form>
+
+</body>
+</html>
