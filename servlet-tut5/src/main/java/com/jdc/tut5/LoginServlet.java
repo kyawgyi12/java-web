@@ -19,23 +19,28 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// get userid
-		String userId = request.getParameter("loginId");
-		// get pass
-		String pass = request.getParameter("pass");
+		try {
+			// get userid
+			String userId = request.getParameter("loginId");
+			// get pass
+			String pass = request.getParameter("pass");
+			
+			String initUser = getInitParameter("user");
+			String initPass = getInitParameter("pass");
 
-		// check
-		if(null != userId && pass != null) {
-			if(userId.equals(getInitParameter("user")) 
-					&& pass.equals(getInitParameter("pass"))) {
+			// check
+			if(userId.equals(initUser) && pass.equals(initPass)) {
 				// add to session
 				HttpSession session = request.getSession(true);
 				session.setAttribute("user", userId);
 				session.setAttribute("pass", pass);
 				// go to user home
 				response.sendRedirect("/servlet-tut5/user/home.jsp");
+
+			} else {
+				response.sendRedirect("/servlet-tut5/error.html");
 			}
-		} else {
+		} catch (NullPointerException e) {
 			response.sendRedirect("/servlet-tut5/error.html");
 		}
 		
